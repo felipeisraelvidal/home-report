@@ -130,6 +130,7 @@
 		5534C84927056BA50072AC69 /* Home+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Extension.swift"; sourceTree = "<group>"; };
 		5534C84B27056F940072AC69 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		5534C84D27056FA90072AC69 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		55F9CF3627065DDA001CE53C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +161,7 @@
 		5534C7B927053C5A0072AC69 = {
 			isa = PBXGroup;
 			children = (
+				55F9CF3627065DDA001CE53C /* README.md */,
 				5534C7C427053C5A0072AC69 /* HomeReport */,
 				5534C7D527053C5D0072AC69 /* HomeReportTests */,
 				5534C7DF27053C5D0072AC69 /* HomeReportUITests */,
