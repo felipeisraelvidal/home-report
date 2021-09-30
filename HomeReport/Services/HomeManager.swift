@@ -20,17 +20,25 @@ enum SortedBy: Int {
 }
 
 class HomeManager: ObservableObject {
-    @Published var homes = []
+    @Published var homes = [Home]()
+    
+    var isForSale: Bool = true {
+        didSet {
+            loadHomes()
+        }
+    }
     
     private let _context: NSManagedObjectContext
+    private let home: Home?
     
     init(context: NSManagedObjectContext) {
         self._context = context
+        self.home = Home(context: context)
         
         loadHomes()
     }
     
     private func loadHomes() {
-        
+        homes = home?.load(isForSale: isForSale) ?? []
     }
 }

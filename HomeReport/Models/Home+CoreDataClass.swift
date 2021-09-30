@@ -51,6 +51,7 @@ public class Home: NSManagedObject, Decodable {
         home.bath = try container.decode(Int16.self, forKey: .bath)
         home.sqft = try container.decode(Int16.self, forKey: .sqft)
         home.homeType = type
+        home.isForSale = try container.decode(Status.self, forKey: .status).isForSale
         home.saleHistories = try container.decode(Set<SaleHistory>.self, forKey: .saleHistory) as NSSet
         
         if home is Condo {

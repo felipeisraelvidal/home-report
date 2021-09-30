@@ -54,6 +54,9 @@
 		5534C844270543990072AC69 /* Home+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534C83C270543990072AC69 /* Home+CoreDataClass.swift */; };
 		5534C845270543990072AC69 /* Home+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534C83D270543990072AC69 /* Home+CoreDataProperties.swift */; };
 		5534C848270546790072AC69 /* CodingUserInfoKey+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534C847270546790072AC69 /* CodingUserInfoKey+Extension.swift */; };
+		5534C84A27056BA50072AC69 /* Home+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534C84927056BA50072AC69 /* Home+Extension.swift */; };
+		5534C84C27056F940072AC69 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534C84B27056F940072AC69 /* Double+Extension.swift */; };
+		5534C84E27056FA90072AC69 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5534C84D27056FA90072AC69 /* Date+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +127,9 @@
 		5534C83C270543990072AC69 /* Home+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5534C83D270543990072AC69 /* Home+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5534C847270546790072AC69 /* CodingUserInfoKey+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CodingUserInfoKey+Extension.swift"; sourceTree = "<group>"; };
+		5534C84927056BA50072AC69 /* Home+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Home+Extension.swift"; sourceTree = "<group>"; };
+		5534C84B27056F940072AC69 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		5534C84D27056FA90072AC69 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,6 +305,9 @@
 			isa = PBXGroup;
 			children = (
 				5534C847270546790072AC69 /* CodingUserInfoKey+Extension.swift */,
+				5534C84927056BA50072AC69 /* Home+Extension.swift */,
+				5534C84B27056F940072AC69 /* Double+Extension.swift */,
+				5534C84D27056FA90072AC69 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -457,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5534C84A27056BA50072AC69 /* Home+Extension.swift in Sources */,
 				5534C844270543990072AC69 /* Home+CoreDataClass.swift in Sources */,
 				5534C843270543990072AC69 /* SingleFamily+CoreDataProperties.swift in Sources */,
 				5534C842270543990072AC69 /* SingleFamily+CoreDataClass.swift in Sources */,
@@ -464,8 +474,10 @@
 				5534C840270543990072AC69 /* SaleHistory+CoreDataClass.swift in Sources */,
 				5534C7F227053C8F0072AC69 /* HomeReport.xcdatamodeld in Sources */,
 				5534C7FC27053D710072AC69 /* HomeListView.swift in Sources */,
+				5534C84C27056F940072AC69 /* Double+Extension.swift in Sources */,
 				5534C7F727053D290072AC69 /* HomeManager.swift in Sources */,
 				5534C7C627053C5A0072AC69 /* HomeReportApp.swift in Sources */,
+				5534C84E27056FA90072AC69 /* Date+Extension.swift in Sources */,
 				5534C7FE27053D920072AC69 /* SummaryView.swift in Sources */,
 				5534C7F427053C9C0072AC69 /* PersistenceManager.swift in Sources */,
 				5534C845270543990072AC69 /* Home+CoreDataProperties.swift in Sources */,

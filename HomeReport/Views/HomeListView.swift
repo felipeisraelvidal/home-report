@@ -20,9 +20,14 @@ struct HomeListView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding(.horizontal, 20)
+                .onChange(of: selectedIndex) { newValue in
+                    manager.isForSale = newValue == .forSale
+                }
                 
                 List {
-                    Text("Home Cell")
+                    ForEach(manager.homes, id: \.id) { home in
+                        HomeCellView(home: home)
+                    }
                 }
                 .listStyle(InsetListStyle())
             }

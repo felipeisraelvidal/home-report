@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct HomeCellView: View {
+    var home: Home
+    
     var body: some View {
         HStack {
             Group {
-                Image(systemName: "house.circle")
-                    .resizable()
+                if let imageData = home.image, let image = UIImage(data: imageData) {
+                    Image(uiImage: image)
+                        .resizable()
+                } else {
+                    Image(systemName: "house.circle")
+                        .resizable()
+                }
             }
             .aspectRatio(contentMode: .fill)
             .frame(width: 75, height: 50)
@@ -20,28 +27,28 @@ struct HomeCellView: View {
             .cornerRadius(6)
             
             VStack(alignment: .leading) {
-                Text("City - Type")
+                Text("\(home.city) - \(home.homeType)")
                     .font(.subheadline)
                 
                 HStack(spacing: 20) {
                     VStack {
-                        Text("Price")
-                        Text("$$$")
+                        Text(home.isForSale ? "Current Price" : "Sold Price")
+                        Text(home.price.currency)
                     }
                     
                     VStack {
                         Text("Bed")
-                        Text("0")
+                        Text("\(home.bed)")
                     }
                     
                     VStack {
                         Text("Bath")
-                        Text("0")
+                        Text("\(home.bath)")
                     }
                     
                     VStack {
                         Text("SqFt")
-                        Text("0")
+                        Text("\(home.sqft)")
                     }
                 }
                 .font(.caption2)
@@ -52,7 +59,13 @@ struct HomeCellView: View {
 }
 
 struct HomeCellView_Previews: PreviewProvider {
+    private static var home: Home = {
+        let home = Home(context: PersistenceManager.preview.container.viewContext)
+        home.id = UUID()
+        return home
+    }()
+    
     static var previews: some View {
-        HomeCellView()
+        HomeCellView(home: home)
     }
 }
