@@ -17,19 +17,19 @@ struct SummaryView: View {
                     HStack {
                         Text("Total home sales")
                         Spacer()
-                        Text("$$$")
+                        Text(manager.totalSoldHomesValue().currency)
                     }
                     
                     HStack {
                         Text("# of Condo sold")
                         Spacer()
-                        Text("999")
+                        Text("\(manager.totalSoldCondo())")
                     }
                     
                     HStack {
                         Text("# of SF sold")
                         Spacer()
-                        Text("999")
+                        Text("\(manager.totalSoldSingleFamily())")
                     }
                 }
                 

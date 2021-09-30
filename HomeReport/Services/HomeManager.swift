@@ -28,6 +28,18 @@ class HomeManager: ObservableObject {
         }
     }
     
+    var sortedBy: SortedBy = .location {
+        didSet {
+            loadHomes()
+        }
+    }
+    
+    var homeType: HomeType = .unknown {
+        didSet {
+            loadHomes()
+        }
+    }
+    
     private let context: NSManagedObjectContext
     private let home: Home?
     
@@ -39,7 +51,25 @@ class HomeManager: ObservableObject {
     }
     
     private func loadHomes() {
-        homes = home?.load(isForSale: isForSale) ?? []
+        var sortDescriptors = [NSSortDescriptor]()
+        
+        switch sortedBy {
+        case .location:
+            sortDescriptors.append(NSSortDescriptor(keyPath: \Home.city, ascending: true))
+            sortDescriptors.append(NSSortDescriptor(keyPath: \Home.price, ascending: true))
+        case .priceAscending:
+            sortDescriptors.append(NSSortDescriptor(keyPath: \Home.price, ascending: true))
+        case .priceDescending:
+            sortDescriptors.append(NSSortDescriptor(keyPath: \Home.price, ascending: false))
+        }
+        
+        var filterPredicate: NSPredicate?
+        
+        if homeType != .unknown {
+            filterPredicate = NSPredicate(format: "%K = %@", #keyPath(Home.homeType), homeType.rawValue)
+        }
+        
+        homes = home?.load(isForSale: isForSale, filterBy: filterPredicate, sortBy: sortDescriptors) ?? []
     }
     
     func saleHistory(for home: Home) -> [SaleHistory] {
@@ -55,5 +85,17 @@ class HomeManager: ObservableObject {
         } catch {
             fatalError(error.localizedDescription)
         }
+    }
+    
+    func totalSoldHomesValue() -> Double {
+        home?.totalSoldHomesValue() ?? 0
+    }
+    
+    func totalSoldCondo() -> Int {
+        home?.totalSoldCondo() ?? 0
+    }
+    
+    func totalSoldSingleFamily() -> Int {
+        home?.totalSoldSingleFamily() ?? 0
     }
 }

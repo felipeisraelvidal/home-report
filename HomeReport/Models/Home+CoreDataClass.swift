@@ -13,6 +13,7 @@ import UIKit
 enum HomeType: String {
     case condo = "Condo"
     case singleFamily = "Single Family"
+    case unknown = "Show All"
 }
 
 @objc(Home)
