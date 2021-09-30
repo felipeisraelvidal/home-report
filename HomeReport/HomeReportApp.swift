@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct HomeReportApp: App {
+    let homeManager = HomeManager(
+        context: PersistenceManager().container.viewContext
+    )
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
+                .environmentObject(homeManager)
         }
     }
 }

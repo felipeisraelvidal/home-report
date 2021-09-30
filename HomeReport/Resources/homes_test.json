@@ -1,0 +1,57 @@
+[
+    {
+        "city": "Boulder",
+        "price": 289000,
+        "bed": 1,
+        "bath": 1,
+        "sqft": 821,
+        "image": "289000.jpg",
+        "category": {
+            "homeType": "Condo"
+        },
+        "status": {
+            "isForSale": true
+        },
+        "unitsPerBuilding": 4,
+        "saleHistory": [
+            {
+                "soldPrice": 202500,
+                "soldDate": "2005-12-27"
+            },
+            {
+                "soldPrice": 189500,
+                "soldDate": "1998-03-07"
+            }
+        ]
+    },
+    {
+        "city": "Thornton",
+        "price": 1698000,
+        "bed": 5,
+        "bath": 4,
+        "sqft": 6544,
+        "image": "1698000.jpg",
+        "category": {
+            "homeType": "Single Family"
+        },
+        "status": {
+            "isForSale": true
+        },
+        "lotSize": 4000,
+        "saleHistory": [
+            {
+                "soldPrice": 1022500,
+                "soldDate": "2004-11-07"
+            },
+            {
+                "soldPrice": 889500,
+                "soldDate": "1996-02-05"
+            },
+            {
+                "soldPrice": 700500,
+                "soldDate": "1994-06-25"
+            }
+        ]
+    }
+]
+ 
