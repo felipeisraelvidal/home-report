@@ -100,6 +100,70 @@ extension Home {
         
         return 0
     }
+    
+    func soldPrice(priceType: String) -> Double { // "min" or "max"
+        guard let context = self.managedObjectContext else { return 0 }
+        
+        let request: NSFetchRequest<Home> = Home.fetchRequest()
+        request.predicate = statusPredicate()
+        request.resultType = .dictionaryResultType
+        
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.name = "priceType"
+        expressionDescription.expression = NSExpression(
+            forFunction: "\(priceType):",
+            arguments: [
+                NSExpression(
+                    forKeyPath: #keyPath(Home.price)
+                )
+            ]
+        )
+        expressionDescription.expressionResultType = .doubleAttributeType
+        
+        request.propertiesToFetch = [expressionDescription]
+        
+        if let request = request as? NSFetchRequest<NSFetchRequestResult>,
+           let results = try? context.fetch(request) as? [NSDictionary],
+           let homePrice = results.first?["priceType"] as? Double {
+            return homePrice
+        }
+        
+        return 0
+    }
+    
+    func averagePrice(for homeType: HomeType) -> Double {
+        guard let context = self.managedObjectContext else { return 0 }
+        
+        let soldPredicate = statusPredicate()
+        let typePredicate = homeTypePredicate(for: homeType)
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [soldPredicate, typePredicate])
+        
+        let request: NSFetchRequest<Home> = Home.fetchRequest()
+        request.predicate = predicate
+        request.resultType = .dictionaryResultType
+        
+        let expressionDescription = NSExpressionDescription()
+        expressionDescription.name = homeType.rawValue
+        expressionDescription.expression = NSExpression(
+            forFunction: "average:",
+            arguments: [
+                NSExpression(
+                    forKeyPath: #keyPath(Home.price)
+                )
+            ]
+        )
+        expressionDescription.expressionResultType = .doubleAttributeType
+        
+        request.propertiesToFetch = [expressionDescription]
+        
+        if let request = request as? NSFetchRequest<NSFetchRequestResult>,
+            let results = try? context.fetch(request) as? [NSDictionary],
+            let homePrice = results.first?[homeType.rawValue] as? Double {
+            return homePrice
+        }
+        
+        return 0
+    }
 }
 
 extension Home {

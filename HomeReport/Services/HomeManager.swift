@@ -98,4 +98,12 @@ class HomeManager: ObservableObject {
     func totalSoldSingleFamily() -> Int {
         home?.totalSoldSingleFamily() ?? 0
     }
+    
+    func soldPrice(priceType: String) -> Double {
+        home?.soldPrice(priceType: priceType) ?? 0
+    }
+    
+    func averageSoldPrice(for homeType: HomeType) -> Double {
+        home?.averagePrice(for: homeType) ?? 0
+    }
 }

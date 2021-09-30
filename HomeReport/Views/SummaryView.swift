@@ -37,13 +37,13 @@ struct SummaryView: View {
                     HStack {
                         Text("Min home price")
                         Spacer()
-                        Text("$$$")
+                        Text(manager.soldPrice(priceType: "min").currency)
                     }
                     
                     HStack {
                         Text("Max home price")
                         Spacer()
-                        Text("$$$")
+                        Text(manager.soldPrice(priceType: "max").currency)
                     }
                 }
                 
@@ -51,13 +51,13 @@ struct SummaryView: View {
                     HStack {
                         Text("Avg condo price")
                         Spacer()
-                        Text("$$$")
+                        Text(manager.averageSoldPrice(for: .condo).currency)
                     }
                     
                     HStack {
                         Text("Avg SF price")
                         Spacer()
-                        Text("$$$")
+                        Text(manager.averageSoldPrice(for: .singleFamily).currency)
                     }
                 }
             }
