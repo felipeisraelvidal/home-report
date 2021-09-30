@@ -28,11 +28,11 @@ class HomeManager: ObservableObject {
         }
     }
     
-    private let _context: NSManagedObjectContext
+    private let context: NSManagedObjectContext
     private let home: Home?
     
     init(context: NSManagedObjectContext) {
-        self._context = context
+        self.context = context
         self.home = Home(context: context)
         
         loadHomes()
@@ -40,5 +40,20 @@ class HomeManager: ObservableObject {
     
     private func loadHomes() {
         homes = home?.load(isForSale: isForSale) ?? []
+    }
+    
+    func saleHistory(for home: Home) -> [SaleHistory] {
+        let request: NSFetchRequest<SaleHistory> = SaleHistory.fetchRequest()
+        request.predicate = NSPredicate(format: "%K = %@", #keyPath(SaleHistory.home), home)
+        request.sortDescriptors = [
+            NSSortDescriptor(keyPath: \SaleHistory.soldDate, ascending: false)
+        ]
+        
+        do {
+            let saleHistory = try context.fetch(request)
+            return saleHistory
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
 }

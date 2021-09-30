@@ -26,7 +26,11 @@ struct HomeListView: View {
                 
                 List {
                     ForEach(manager.homes, id: \.id) { home in
-                        HomeCellView(home: home)
+                        NavigationLink(
+                            destination: SaleHistoryView(home: home)
+                        ) {
+                            HomeCellView(home: home)
+                        }
                     }
                 }
                 .listStyle(InsetListStyle())
